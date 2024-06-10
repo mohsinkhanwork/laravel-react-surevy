@@ -6,12 +6,17 @@ import Signup from "./views/Signup";
 import Surveys from "./views/Surveys";
 import GuestLayout from "./components/GuestLayout";
 import DefaultLayout from "./components/DefaultLayout";
+import { Navigate } from "react-router-dom";
 
 const Router = createBrowserRouter([
     {
         path: "/",
         element: <DefaultLayout />,
         children: [
+            {
+                path: "/dashboard",
+                element: <Navigate to="/" />,
+            },
             {
                 path: "/",
                 element: <Dashboad />,
