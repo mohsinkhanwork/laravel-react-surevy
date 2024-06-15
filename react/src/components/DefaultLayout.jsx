@@ -10,7 +10,7 @@ import {
   Transition,
 } from '@headlessui/react'
 import { Bars3Icon, BellIcon, UserIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Navigate, Outlet } from 'react-router-dom'
 import { userStateContext } from '../context/ContextProvider'
 
 const navigation = [
@@ -23,7 +23,12 @@ function classNames(...classes) {
 }
 
 export default function DefaultLayout() {
-  const {currentUser} = userStateContext();
+  const {currentUser, userToken} = userStateContext();
+
+  if(!userToken) {
+    return <Navigate to="/login" />
+  }
+
   const logout = (ev) => {
     ev.preventDefault()
     console.log('logout')
@@ -45,6 +50,7 @@ export default function DefaultLayout() {
                       />
                     </div>
                     <div className="hidden md:block">
+                    
                       <div className="ml-10 flex items-baseline space-x-4">
                         {navigation.map((item) => (
                           <NavLink

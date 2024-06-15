@@ -15,7 +15,7 @@ const [currentUser, setCurrentUser] = useState({
     email: "mkhan9658@gmail.com",
     role: "admin"
 });
-const [userToken, setUserToken] = useState(null);
+const [userToken, setUserToken] = useState(123);
     return (
         <StateContext.Provider value={{
             currentUser,
